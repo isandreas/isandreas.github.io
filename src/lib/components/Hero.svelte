@@ -119,7 +119,7 @@
           variant="ghost"
           size="icon"
           class="hover:bg-primary/10 hover:text-primary transition-all hover:scale-110 rounded-full h-12 w-12"
-          href="https://linkedin.com/in/yourprofile"
+          href="https://linkedin.com/in/andreas-isnawan"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -130,7 +130,7 @@
           variant="ghost"
           size="icon"
           class="hover:bg-primary/10 hover:text-primary transition-all hover:scale-110 rounded-full h-12 w-12"
-          href="mailto:your.email@example.com"
+          href="mailto:isandreas.dev@gmail.com"
         >
           <Mail class="h-6 w-6" />
           <span class="sr-only">Email</span>

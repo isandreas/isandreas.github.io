@@ -62,7 +62,7 @@
     },
     {
       name: "Koa.js",
-      icon: "https://raw.githubusercontent.com/github/explore/87f34cdeac1f39d14360a06411c44118dcf5c1d5/topics/koa/koa.png",
+      icon: "https://www.vectorlogo.zone/logos/koajs/koajs-ar21.svg",
       color: "bg-teal-500/10 border-teal-500/20",
     },
     {
@@ -74,11 +74,6 @@
       name: "Git",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
       color: "bg-orange-700/10 border-orange-700/20",
-    },
-    {
-      name: "REST APIs",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
-      color: "bg-purple-500/10 border-purple-500/20",
     },
     {
       name: "Java",
@@ -107,11 +102,12 @@
           About Me
         </h2>
         <p class="text-lg text-muted-foreground">
-          Passionate fullstack developer with extensive experience in building
-          modern, scalable web applications. I specialize in creating intuitive
-          user interfaces while maintaining robust backend systems. My expertise
-          lies in translating complex requirements into elegant, user-friendly
-          solutions.
+          Senior Software Engineer with 7+ years of experience in software
+          development and team leadership, successfully led AccelByte web team
+          for 2K Games client from the ground up. I specialize in creating
+          intuitive user interfaces while maintaining robust backend systems. My
+          expertise lies in translating complex requirements into elegant,
+          user-friendly solutions.
         </p>
       </div>
 
@@ -154,7 +150,10 @@
                   <img
                     src={tech.icon}
                     alt={tech.name}
-                    class="w-10 h-10 object-contain {tech.name === 'Express.js'
+                    class="w-10 h-10 object-contain {[
+                      'Express.js',
+                      'Koa.js',
+                    ].includes(tech.name)
                       ? 'dark:invert'
                       : ''}"
                   />

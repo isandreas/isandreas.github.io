@@ -18,6 +18,7 @@ Visit the live site: [https://isandreas.github.io/](https://isandreas.github.io/
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **SvelteKit**: Modern web framework for building fast, efficient applications
 - **TypeScript**: Type-safe development
 - **Tailwind CSS**: Utility-first CSS framework
@@ -25,6 +26,7 @@ Visit the live site: [https://isandreas.github.io/](https://isandreas.github.io/
 - **Lucide Svelte**: Beautiful, consistent icons
 
 ### Deployment
+
 - **GitHub Pages**: Static hosting
 - **GitHub Actions**: Automated CI/CD pipeline
 
@@ -65,23 +67,27 @@ Visit the live site: [https://isandreas.github.io/](https://isandreas.github.io/
 ## 🚀 Local Development
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or pnpm
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/isandreas/isandreas.github.io.git
 cd isandreas.github.io
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -102,6 +108,7 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 ### Manual Deployment
 
 1. Build the project:
+
 ```bash
 npm run build
 ```
@@ -120,12 +127,15 @@ npm run build
 ### Update Personal Information
 
 1. **Hero Section** (`src/lib/components/Hero.svelte`):
+
    - Update social media links (GitHub, LinkedIn, Email)
 
 2. **Contact Section** (`src/lib/components/Contact.svelte`):
+
    - Update contact information and links
 
 3. **Skills Section** (`src/lib/components/Skills.svelte`):
+
    - Modify technology stacks and badges
 
 4. **Portfolio Section** (`src/lib/components/Portfolio.svelte`):
@@ -148,8 +158,8 @@ Contributions, issues, and feature requests are welcome!
 ## 📧 Contact
 
 - GitHub: [@isandreas](https://github.com/isandreas)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/andreas-isnawan)
+- Email: isandreas.dev@gmail.com
 
 ---
 

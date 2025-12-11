@@ -162,7 +162,7 @@
           <span class="sr-only">GitHub</span>
         </a>
         <a
-          href="https://linkedin.com/in/yourprofile"
+          href="https://linkedin.com/in/andreas-isnawan"
           target="_blank"
           rel="noopener noreferrer"
           class="text-muted-foreground hover:text-foreground transition-colors"
@@ -171,7 +171,7 @@
           <span class="sr-only">LinkedIn</span>
         </a>
         <a
-          href="mailto:your.email@example.com"
+          href="mailto:isandreas.dev@gmail.com"
           class="text-muted-foreground hover:text-foreground transition-colors"
         >
           <Mail class="h-5 w-5" />
