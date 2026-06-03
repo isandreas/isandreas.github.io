@@ -76,14 +76,19 @@
       color: "bg-orange-700/10 border-orange-700/20",
     },
     {
-      name: "Java",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-      color: "bg-red-600/10 border-red-600/20",
+      name: "Vercel",
+      icon: "https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg",
+      color: "bg-gray-900/10 border-gray-900/20",
     },
     {
-      name: "Spring Boot",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
-      color: "bg-green-500/10 border-green-500/20",
+      name: "Sentry",
+      icon: "https://cdn.simpleicons.org/sentry",
+      color: "bg-gray-800/10 border-gray-800/20",
+    },
+    {
+      name: "Cypress",
+      icon: "https://cdn.simpleicons.org/cypress",
+      color: "bg-emerald-500/10 border-emerald-500/20",
     },
     {
       name: "Vue.js",
@@ -95,19 +100,19 @@
 
 <section id="about" class="py-24 md:py-32 bg-background">
   <div class="container px-4 md:px-6">
-    <div class="space-y-12">
+    <div class="space-y-16">
       <!-- About Section -->
       <div class="text-center space-y-4 max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           About Me
         </h2>
         <p class="text-lg text-muted-foreground">
-          Senior Software Engineer with 7+ years of experience in software
+          Senior Software Engineer with 8+ years of experience in software
           development and team leadership, successfully led AccelByte web team
-          for 2K Games client from the ground up. I specialize in creating
-          intuitive user interfaces while maintaining robust backend systems. My
-          expertise lies in translating complex requirements into elegant,
-          user-friendly solutions.
+          for 2K Games client from the ground up. I successfully integrated key
+          services including player account management, e-commerce,
+          achievements, campaigns, and telemetry, while developing JS and Python
+          libraries for both client and server use.
         </p>
       </div>
 
@@ -153,6 +158,7 @@
                     class="w-10 h-10 object-contain {[
                       'Express.js',
                       'Koa.js',
+                      'Vercel',
                     ].includes(tech.name)
                       ? 'dark:invert'
                       : ''}"
