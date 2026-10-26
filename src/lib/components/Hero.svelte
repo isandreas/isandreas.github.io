@@ -1,47 +1,44 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
   import { Github, Linkedin, Mail } from "lucide-svelte";
+
+  const hexagons = [
+    { top: "10%", left: "10%", delay: "0s" },
+    { top: "20%", left: "80%", delay: "1s" },
+    { top: "60%", left: "15%", delay: "2s" },
+    { top: "70%", left: "70%", delay: "1.5s" },
+    { top: "40%", left: "85%", delay: "0.5s" },
+    { top: "30%", left: "45%", delay: "2.5s" }
+  ];
 </script>
 
 <section
   class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/30"
 >
   <!-- Hexagon background animation -->
-  <div class="hexagon-container absolute inset-0 opacity-30">
-    <div class="hexagon" style="top: 10%; left: 10%;"></div>
-    <div
-      class="hexagon"
-      style="top: 20%; left: 80%; animation-delay: 1s;"
-    ></div>
-    <div
-      class="hexagon"
-      style="top: 60%; left: 15%; animation-delay: 2s;"
-    ></div>
-    <div
-      class="hexagon"
-      style="top: 70%; left: 70%; animation-delay: 1.5s;"
-    ></div>
-    <div
-      class="hexagon"
-      style="top: 40%; left: 85%; animation-delay: 0.5s;"
-    ></div>
-    <div
-      class="hexagon"
-      style="top: 30%; left: 45%; animation-delay: 2.5s;"
-    ></div>
+  <div class="hexagon-container absolute inset-0 opacity-30" aria-hidden="true">
+    {#each hexagons as hex, i (i)}
+      <div
+        class="hexagon motion-reduce:animate-none"
+        style="top: {hex.top}; left: {hex.left}; animation-delay: {hex.delay};"
+      ></div>
+    {/each}
   </div>
 
   <!-- Decorative background elements -->
   <div
-    class="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-800 [mask-image:linear-gradient(0deg,transparent,black)] opacity-20"
-  />
+    class="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-800 [mask-image:linear-gradient(0deg,transparent,black)] opacity-20 pointer-events-none"
+    aria-hidden="true"
+  ></div>
   <div
-    class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"
-  />
+    class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none pointer-events-none"
+    aria-hidden="true"
+  ></div>
   <div
-    class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse"
+    class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse motion-reduce:animate-none pointer-events-none"
     style="animation-delay: 1s;"
-  />
+    aria-hidden="true"
+  ></div>
 
   <div class="container relative px-4 md:px-6 z-10">
     <div class="flex flex-col items-center space-y-10 text-center">
@@ -52,14 +49,14 @@
           <p class="text-sm font-medium text-primary">Welcome to my page</p>
         </div>
 
-        <h2
+        <p
           class="text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100"
         >
           Hello, I'm <span class="text-foreground font-semibold">Andreas</span> 👋
-        </h2>
+        </p>
 
         <h1
-          class="hero-title text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 leading-tight transition-all duration-300"
+          class="hero-title text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent hover:text-foreground transition-colors animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 leading-tight"
         >
           Senior Software Engineer
         </h1>
@@ -80,22 +77,16 @@
       >
         <Button
           size="lg"
+          href="#portfolio"
           class="text-base font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
-          on:click={() =>
-            document
-              .getElementById("portfolio")
-              ?.scrollIntoView({ behavior: "smooth" })}
         >
           View Portfolio
         </Button>
         <Button
           size="lg"
           variant="outline"
+          href="#contact"
           class="text-base font-semibold hover:scale-105 transition-all"
-          on:click={() =>
-            document
-              .getElementById("contact")
-              ?.scrollIntoView({ behavior: "smooth" })}
         >
           Contact Me
         </Button>
@@ -111,6 +102,7 @@
           href="https://github.com/isandreas"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub profile"
         >
           <Github class="h-6 w-6" />
           <span class="sr-only">GitHub</span>
@@ -122,6 +114,7 @@
           href="https://linkedin.com/in/andreas-isnawan"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
         >
           <Linkedin class="h-6 w-6" />
           <span class="sr-only">LinkedIn</span>
@@ -131,6 +124,7 @@
           size="icon"
           class="hover:bg-primary/10 hover:text-primary transition-all hover:scale-110 rounded-full h-12 w-12"
           href="mailto:isandreas.dev@gmail.com"
+          aria-label="Send email"
         >
           <Mail class="h-6 w-6" />
           <span class="sr-only">Email</span>
@@ -139,26 +133,18 @@
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div
-    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
-    role="button"
-    tabindex="0"
-    on:click={() =>
-      document
-        .getElementById("portfolio")
-        ?.scrollIntoView({ behavior: "smooth" })}
-    on:keydown={(e) =>
-      e.key === "Enter" &&
-      document
-        .getElementById("portfolio")
-        ?.scrollIntoView({ behavior: "smooth" })}
+  <!-- Scroll indicator link -->
+  <a
+    href="#portfolio"
+    aria-label="Scroll to portfolio section"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce motion-reduce:animate-none opacity-60 hover:opacity-100 transition-opacity p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full cursor-pointer"
   >
     <svg
       class="w-6 h-6 text-muted-foreground"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
+      aria-hidden="true"
     >
       <path
         stroke-linecap="round"
@@ -167,20 +153,10 @@
         d="M19 14l-7 7m0 0l-7-7m7 7V3"
       ></path>
     </svg>
-  </div>
+  </a>
 </section>
 
 <style>
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.6;
-    }
-  }
-
   /* Hexagon animation */
   .hexagon-container {
     pointer-events: none;
@@ -229,30 +205,7 @@
     }
   }
 
-  /* Hero title hover effect */
   .hero-title {
-    position: relative;
-    transition: all 0.3s ease;
     display: inline-block;
-    width: fit-content;
-  }
-
-  .hero-title:hover {
-    background: transparent !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: white;
-    color: white;
-  }
-
-  :global(.dark) .hero-title:hover {
-    -webkit-text-fill-color: white;
-    color: white;
-  }
-
-  :global(.light) .hero-title:hover,
-  :global(html:not(.dark)) .hero-title:hover {
-    -webkit-text-fill-color: black;
-    color: black;
   }
 </style>

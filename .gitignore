@@ -33,3 +33,8 @@ coverage
 
 # Misc
 *.local
+
+# AI related
+.gemini
+.github/agents
+.github/skills
