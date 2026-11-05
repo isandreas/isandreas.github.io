@@ -126,3 +126,38 @@ When working on Svelte or SvelteKit components, adhere to the Svelte MCP server 
 ### 4. `playground-link`
 - Only generate playground links upon explicit user request.
 - **NEVER** call this tool when code has already been written directly to workspace files.
+
+---
+
+## 7. Portfolio Preview Image Composition (`16:9` Showcase Boards)
+
+When composing raw UI screenshots (e.g., mobile menus, Telegram bot panels, or non-`16:9` crops) into `16:9` preview images for `src/lib/components/Portfolio.svelte`:
+
+1. **Tooling**:
+   - Use **macOS Swift (`Cocoa` + `CoreGraphics`)** executed via:
+     ```bash
+     swift -module-cache-path /tmp/swift-cache <script_path>.swift
+     ```
+   - This requires zero external npm/Python dependencies and runs natively inside the sandbox when `-module-cache-path /tmp/swift-cache` is passed.
+
+2. **Canvas & Visual Specifications**:
+   - **Dimensions**: `1920 × 1080` (`16:9` aspect ratio, 8-bit RGBA PNG, high interpolation quality, anti-aliased).
+   - **Background**:
+     - Diagonal linear gradient from `(0, 1080)` to `(1920, 0)` with stops at `0.0`, `0.5`, `1.0`:
+       - Stop `0.0`: `#0e1621` (`RGB(0.055, 0.086, 0.129)`)
+       - Stop `0.5`: `#17212b` (`RGB(0.090, 0.129, 0.169)`)
+       - Stop `1.0`: `#0e1621` (`RGB(0.055, 0.086, 0.129)`)
+     - Center-top radial glow centered at `(960, 594)` (`0.5w, 0.55h`), radius `10 -> 850`, color `RGBA(0.16, 0.45, 0.75, 0.14 -> 0.0)`.
+   - **Screenshot Cards**:
+     - Rounded rectangle clip & border with `cornerRadius = 22`.
+     - Card backing fill: `RGB(0.09, 0.13, 0.17)`.
+     - Drop shadow: `offset: (0, -14)`, `blur: 36`, `color: RGBA(0, 0, 0, 0.55)`.
+     - Subtle stroke border: `2.0px` width, `RGBA(0.35, 0.52, 0.70, 0.28)`.
+   - **Pill Header Labels**:
+     - Font: `NSFont.systemFont(ofSize: 20, weight: .semibold)`.
+     - Text color: `NSColor(calibratedRed: 0.65, green: 0.82, blue: 0.98, alpha: 1.0)`.
+     - Padding: `padX = 22`, `padY = 9`, fully rounded capsule (`cornerRadius = height / 2`).
+     - Pill fill: `RGBA(0.12, 0.20, 0.29, 0.85)`.
+     - Pill border: `1.5px` width, `RGBA(0.30, 0.55, 0.82, 0.40)`.
+     - Positioned centered horizontally above each screenshot card (`~40–55px` above the card's top edge).
+
