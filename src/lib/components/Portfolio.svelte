@@ -11,7 +11,8 @@
 
   let expandedImage = $state<string | null>(null);
   let currentIndex = $state(0);
-  const totalSlides = 3;
+  const showMataHati = false;
+  const totalSlides = showMataHati ? 3 : 2;
 
   function toggleImage(imageSrc: string) {
     expandedImage = expandedImage === imageSrc ? null : imageSrc;
@@ -85,23 +86,25 @@
             >
               Church Management
             </button>
+            {#if showMataHati}
+              <button
+                type="button"
+                class="px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all cursor-pointer {currentIndex ===
+                1
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'}"
+                onclick={() => goToSlide(1)}
+              >
+                MataHati
+              </button>
+            {/if}
             <button
               type="button"
               class="px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all cursor-pointer {currentIndex ===
-              1
+              (showMataHati ? 2 : 1)
                 ? 'bg-background text-foreground shadow-sm'
                 : 'text-muted-foreground hover:text-foreground'}"
-              onclick={() => goToSlide(1)}
-            >
-              MataHati
-            </button>
-            <button
-              type="button"
-              class="px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all cursor-pointer {currentIndex ===
-              2
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'}"
-              onclick={() => goToSlide(2)}
+              onclick={() => goToSlide(showMataHati ? 2 : 1)}
             >
               Telegram Bot
             </button>
@@ -255,127 +258,133 @@
               </Card>
             </div>
 
-            <!-- Slide 2: MataHati Project -->
-            <div class="w-full flex-shrink-0">
-              <Card
-                class="flex flex-col h-full transition-all hover:shadow-xl border-primary/20"
-              >
-                <CardHeader>
-                  <div class="flex items-start justify-between gap-4 flex-wrap">
-                    <div class="space-y-3 flex-1">
-                      <div class="flex items-center gap-3 flex-wrap">
-                        <CardTitle class="text-3xl">MataHati</CardTitle>
-                        <Badge
-                          variant="outline"
-                          class="border-primary/30 text-primary bg-primary/5 font-medium"
-                        >
-                          Integration Collaboration with Tenang.AI
-                        </Badge>
-                        <Badge
-                          variant="default"
-                          class="bg-green-500/10 text-green-600 border-green-500/20 hover:bg-green-500/20"
-                        >
-                          Done
-                        </Badge>
+            <!-- Slide 2: MataHati Project (Temporarily Hidden) -->
+            {#if showMataHati}
+              <div class="w-full flex-shrink-0">
+                <Card
+                  class="flex flex-col h-full transition-all hover:shadow-xl border-primary/20"
+                >
+                  <CardHeader>
+                    <div
+                      class="flex items-start justify-between gap-4 flex-wrap"
+                    >
+                      <div class="space-y-3 flex-1">
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <CardTitle class="text-3xl">MataHati</CardTitle>
+                          <Badge
+                            variant="outline"
+                            class="border-primary/30 text-primary bg-primary/5 font-medium"
+                          >
+                            Integration Collaboration with Tenang.AI
+                          </Badge>
+                          <Badge
+                            variant="default"
+                            class="bg-green-500/10 text-green-600 border-green-500/20 hover:bg-green-500/20"
+                          >
+                            Done
+                          </Badge>
+                        </div>
+                        <CardDescription class="text-base leading-relaxed">
+                          A local mental health support platform by <strong
+                            class="text-foreground font-semibold"
+                            >Tenang.AI</strong
+                          > for Dinas Kesehatan Kabupaten Sleman. I collaborated with
+                          my friend, the CEO of Tenang.AI, to help integrate their
+                          LLM-powered AI co-psychologist companion and public healthcare
+                          referral workflows into the platform.
+                        </CardDescription>
                       </div>
-                      <CardDescription class="text-base leading-relaxed">
-                        A local mental health support platform by <strong
-                          class="text-foreground font-semibold"
-                          >Tenang.AI</strong
-                        > for Dinas Kesehatan Kabupaten Sleman. I collaborated with
-                        my friend, the CEO of Tenang.AI, to help integrate their
-                        LLM-powered AI co-psychologist companion and public healthcare
-                        referral workflows into the platform.
-                      </CardDescription>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent class="flex-1 space-y-6">
-                  <!-- Project Screenshots -->
-                  <div class="grid grid-cols-3 gap-4">
-                    <button
-                      type="button"
-                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
-                      onclick={() => toggleImage("/matahati-1.png")}
-                      aria-label="View MataHati Landing Page screenshot"
-                    >
-                      <img
-                        src="/matahati-1.png"
-                        alt="MataHati - Landing Page & AI Companion Introduction"
-                        class="w-full h-full object-cover"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
-                      onclick={() => toggleImage("/matahati-2.png")}
-                      aria-label="View MataHati Authentication screenshot"
-                    >
-                      <img
-                        src="/matahati-2.png"
-                        alt="MataHati - Secure Authentication"
-                        class="w-full h-full object-cover"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
-                      onclick={() => toggleImage("/matahati-3.png")}
-                      aria-label="View MataHati Patient Dashboard screenshot"
-                    >
-                      <img
-                        src="/matahati-3.png"
-                        alt="MataHati - Patient Dashboard & Services"
-                        class="w-full h-full object-cover"
-                      />
-                    </button>
-                  </div>
-
-                  <div class="space-y-3">
-                    <h4 class="text-sm font-bold text-primary">
-                      Integration & Key Highlights
-                    </h4>
-                    <ul
-                      class="space-y-2 text-sm text-muted-foreground sm:grid sm:grid-cols-3 sm:space-y-0 sm:gap-4"
-                    >
-                      <li class="flex items-start">
-                        <span class="mr-2 text-primary">✓</span>
-                        <span
-                          >Assisted Tenang.AI in integrating LLM conversational
-                          capabilities as an AI mental wellbeing companion</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span class="mr-2 text-primary">✓</span>
-                        <span
-                          >Integrated direct referral bridge connecting users to
-                          psychologists and Sleman Health Department services</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span class="mr-2 text-primary">✓</span>
-                        <span
-                          >Implemented secure patient portal flows with session
-                          tracking and crisis support pathways</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="space-y-3 pt-4 border-t">
-                    <h4 class="text-sm font-bold">Technology Stack</h4>
-                    <div class="flex flex-wrap gap-2">
-                      <Badge variant="secondary">LLM</Badge>
-                      <Badge variant="secondary">AI Co-Psychologist</Badge>
-                      <Badge variant="secondary">NextJs</Badge>
-                      <Badge variant="secondary">TypeScript</Badge>
-                      <Badge variant="secondary">Tailwind CSS</Badge>
-                      <Badge variant="secondary">PostgreSQL</Badge>
+                  </CardHeader>
+                  <CardContent class="flex-1 space-y-6">
+                    <!-- Project Screenshots -->
+                    <div class="grid grid-cols-3 gap-4">
+                      <button
+                        type="button"
+                        class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                        onclick={() => toggleImage("/matahati-1.png")}
+                        aria-label="View MataHati Landing Page screenshot"
+                      >
+                        <img
+                          src="/matahati-1.png"
+                          alt="MataHati - Landing Page & AI Companion Introduction"
+                          class="w-full h-full object-cover"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                        onclick={() => toggleImage("/matahati-2.png")}
+                        aria-label="View MataHati Authentication screenshot"
+                      >
+                        <img
+                          src="/matahati-2.png"
+                          alt="MataHati - Secure Authentication"
+                          class="w-full h-full object-cover"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                        onclick={() => toggleImage("/matahati-3.png")}
+                        aria-label="View MataHati Patient Dashboard screenshot"
+                      >
+                        <img
+                          src="/matahati-3.png"
+                          alt="MataHati - Patient Dashboard & Services"
+                          class="w-full h-full object-cover"
+                        />
+                      </button>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+
+                    <div class="space-y-3">
+                      <h4 class="text-sm font-bold text-primary">
+                        Integration & Key Highlights
+                      </h4>
+                      <ul
+                        class="space-y-2 text-sm text-muted-foreground sm:grid sm:grid-cols-3 sm:space-y-0 sm:gap-4"
+                      >
+                        <li class="flex items-start">
+                          <span class="mr-2 text-primary">✓</span>
+                          <span
+                            >Assisted Tenang.AI in integrating LLM
+                            conversational capabilities as an AI mental
+                            wellbeing companion</span
+                          >
+                        </li>
+                        <li class="flex items-start">
+                          <span class="mr-2 text-primary">✓</span>
+                          <span
+                            >Integrated direct referral bridge connecting users
+                            to psychologists and Sleman Health Department
+                            services</span
+                          >
+                        </li>
+                        <li class="flex items-start">
+                          <span class="mr-2 text-primary">✓</span>
+                          <span
+                            >Implemented secure patient portal flows with
+                            session tracking and crisis support pathways</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t">
+                      <h4 class="text-sm font-bold">Technology Stack</h4>
+                      <div class="flex flex-wrap gap-2">
+                        <Badge variant="secondary">LLM</Badge>
+                        <Badge variant="secondary">AI Co-Psychologist</Badge>
+                        <Badge variant="secondary">NextJs</Badge>
+                        <Badge variant="secondary">TypeScript</Badge>
+                        <Badge variant="secondary">Tailwind CSS</Badge>
+                        <Badge variant="secondary">PostgreSQL</Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            {/if}
 
             <!-- Slide 3: Telegram Bot Project -->
             <div class="w-full flex-shrink-0">
@@ -391,12 +400,12 @@
                         >
                         <Badge
                           variant="default"
-                          class="bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20 hover:bg-amber-500/20 gap-1.5"
+                          class="bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20 hover:bg-sky-500/20 gap-1.5"
                         >
                           <span
-                            class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"
+                            class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"
                           ></span>
-                          Under Development
+                          Active Development
                         </Badge>
                       </div>
                       <CardDescription class="text-base leading-relaxed">
@@ -409,17 +418,41 @@
                   </div>
                 </CardHeader>
                 <CardContent class="flex-1 space-y-6">
-                  <!-- Project Preview / Under Development Banner -->
+                  <!-- Project Screenshots -->
                   <div class="grid grid-cols-3 gap-4">
                     <button
                       type="button"
-                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer shadow-sm group block bg-background/50"
-                      onclick={() => toggleImage("/telegram-bot-preview.jpg")}
-                      aria-label="View Telegram Bot project preview and development status"
+                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                      onclick={() => toggleImage("/telegram-bot-1.png")}
+                      aria-label="View Telegram Bot Settings Panel and Moderation Gating screenshot"
                     >
                       <img
-                        src="/telegram-bot-preview.jpg"
-                        alt="Telegram Bot for Group Management - Under Development / Coming Soon"
+                        src="/telegram-bot-1.png"
+                        alt="Telegram Bot - Settings Panel & Granular Moderation Gating"
+                        class="w-full h-full object-cover"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                      onclick={() => toggleImage("/telegram-bot-2.png")}
+                      aria-label="View Telegram Bot Sentry Automation Rules screenshot"
+                    >
+                      <img
+                        src="/telegram-bot-2.png"
+                        alt="Telegram Bot - Sentry Automation Rules & Configuration"
+                        class="w-full h-full object-cover"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      class="relative aspect-video rounded-lg overflow-hidden border border-border hover:scale-105 transition-transform cursor-pointer"
+                      onclick={() => toggleImage("/telegram-bot-3.png")}
+                      aria-label="View Telegram Bot Interactive Emoji CAPTCHA Verification screenshot"
+                    >
+                      <img
+                        src="/telegram-bot-3.png"
+                        alt="Telegram Bot - Interactive Emoji CAPTCHA Verification"
                         class="w-full h-full object-cover"
                       />
                     </button>
@@ -435,15 +468,15 @@
                       <li class="flex items-start">
                         <span class="mr-2 text-primary">✓</span>
                         <span
-                          >Automated spam filtering, anti-flood rate limits, and
-                          verification CAPTCHA for incoming members</span
+                          >Interactive sequence-based emoji CAPTCHA verification
+                          and anti-flood rate limits for incoming members</span
                         >
                       </li>
                       <li class="flex items-start">
                         <span class="mr-2 text-primary">✓</span>
                         <span
-                          >Granular moderation commands, warning counters, and
-                          automated temporary bans/mutes</span
+                          >Granular moderation command gating, warn thresholds,
+                          and Sentry custom pattern automation</span
                         >
                       </li>
                       <li class="flex items-start">
@@ -473,7 +506,7 @@
 
         <!-- Slide Indicator Dots -->
         <div class="flex justify-center items-center gap-2 pt-2">
-          {#each [0, 1, 2] as index (index)}
+          {#each Array.from({ length: totalSlides }, (_, i) => i) as index (index)}
             <button
               type="button"
               class="h-2 rounded-full transition-all cursor-pointer {currentIndex ===
